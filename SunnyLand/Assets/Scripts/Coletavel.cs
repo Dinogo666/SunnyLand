@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Coletavel : MonoBehaviour
 {
-    private int pontos = 5;
-    
+    public ParticleSystem efeito;
+    public GameManager gameManager;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("jogo começou ebaeba! Você tem: " + pontos +" pontos");
     }
 
     // Update is called once per frame
@@ -25,8 +25,10 @@ public class Coletavel : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             print("yes");
+            other.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            Instantiate(efeito, transform.position, Quaternion.identity);
+            gameManager.adicionarPontos(1);
             Destroy(gameObject);
-
         }
     }
 
