@@ -5,6 +5,8 @@ public class Coletavel : MonoBehaviour
     public int pontos = 10;
     public GameManager gameManager;
     public ParticleSystem coletavelParticle;
+
+    private bool hasBeenCollected = false; 
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +24,11 @@ public class Coletavel : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D outroObjeto)
     {
-        if(outroObjeto.CompareTag("Player"))
-        {   
+        if (hasBeenCollected) return;
+        
+        if (outroObjeto.CompareTag("Player"))
+        {
+            hasBeenCollected = true;
             gameManager.AdicionarPontos(pontos); // Chama o método do GameManager para adicionar pontos
 
             outroObjeto.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f); // Aumenta o tamanho do jogador ao coletar o item
