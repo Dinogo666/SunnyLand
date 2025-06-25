@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Personagem : MonoBehaviour
-{ 
-    private string nome = "Luca";
-    private int vida = 3;
+{
+    private string nome = "Penis";
+    public int vida = 0;
     public float velocidade = 5.3f;
     private bool vivo = true;
     private Rigidbody2D rb;
